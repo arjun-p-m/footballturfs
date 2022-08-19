@@ -44,10 +44,10 @@ class signin_tb(models.Model):
 	uname=models.CharField(max_length=255)
 	password=models.CharField(max_length=255)
 	
-class contact_tb(models.Model):
-	name=models.CharField(max_length=255)
-	email=models.CharField(max_length=255)
-	message=models.CharField(max_length=255)
+# class contact_tb(models.Model):
+# 	name=models.CharField(max_length=255)
+# 	email=models.CharField(max_length=255)
+# 	message=models.CharField(max_length=255)
 
 class payment_tb(models.Model):
 	nameoncard=models.CharField(max_length=255)
