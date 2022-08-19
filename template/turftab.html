@@ -1,0 +1,53 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">MY TURF</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3 style="text-align: center;font-size: 35px;font-family:caveat;">My Turf</h3>
+				<h4>{{msg}}</h4>
+				<br>
+				<p style="color: #404040;">Welcome, to My Turf .</p><br>
+				<!-- <p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<!-- <thead> -->
+					<tr>
+						<th>name</th>
+						<th>image</th>
+						<th>owner</th>
+						<th>address</th>
+						<!-- <th>rating</th> -->
+						<th>price</th>
+						<th>timing</th>
+					</tr>
+					<!-- </thead> -->
+					{% for x in data %}
+					<tbody>
+					<tr>
+						<td>{{x.name}}</td>
+						<td><img src="{{x.image.url}}" width="100" height="100"></td>
+						<td>{{x.owner.fname}}</td>
+						<td>{{x.address}}</td>
+						<!-- <td>{{x.ratings}}</td> -->
+						<td>{{x.price}}</td>
+						<td>{{x.timing}}</td>
+						<td><a href="/editturf/?tid={{x.id}}"><span class="fa fa-pencil text-muted"></span></a></td>
+						<td><a href="/deleteturf/?tid={{x.id}}"><span class="fa fa-trash text-danger"></span></a></td>
+					</tr>
+					</tbody>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

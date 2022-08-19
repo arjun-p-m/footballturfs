@@ -1,0 +1,37 @@
+{% extends 'backend/headfoot.html' %}
+{% block content %}
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>cart tab</h3>
+				<!-- <p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<tr>
+						<th>name</th>
+						<th>image</th>
+						<th>totalprice</th>
+						<th>status</th>
+						<th>user name</th>
+						<th>owner name</th>
+						<th>booking hours</th>
+						<!-- <th>timing</th> -->
+
+					</tr>
+					{% for x in data %}
+					<tr>
+						<td>{{x.turfid.name}}</td>
+						<td><img src="{{x.turfid.image.url}}" width="100" height="100"></td>
+						<td>{{x.totalprice}}</td>
+						<td>{{x.status}}</td>
+						<td>{{x.name.fname}}</td>
+						<td>{{x.owner.fname}}</td>
+						<td>{{x.btiming}}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

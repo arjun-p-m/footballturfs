@@ -1,0 +1,35 @@
+{% extends 'backend/headfoot.html' %}
+{% block content %}
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>turf tab</h3>
+				<!-- <p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<tr>
+						<th>name</th>
+						<th>owner</th>
+						<th>address</th>
+						<!-- <th>rating</th> -->
+						<th>price</th>
+						<th>timing</th>
+						<th>image</th>
+					</tr>
+					{% for x in data %}
+					<tr>
+						<td>{{x.name}}</td>
+						<td>{{x.owner.fname}}</td>
+						<td>{{x.address}}</td>
+						<!-- <td>{{x.ratings}}</td> -->
+						<td>{{x.price}}</td>
+						<td>{{x.timing}}</td>
+						<td><img src="{{x.image.url}}" width="100" height="100"></td>
+						<td>{% if x.status == "0" %}<button type="submit" class="btn btn-primary" onclick="location.href='/tapproved/?tid={{x.id}}';">not approved</button>{% elif x.status == "1" %}<button type="submit" class="btn btn-success" onclick="location.href='/trejected/?tid={{x.id}}';">approved</button>{% else %}<button type="submit" class="btn btn-danger">rejected</button>{% endif %}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">CART TAB</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3 style="text-align: center;font-size: 35px;font-family:caveat;">Cart Tab</h3>
+				<h2>{{msgkey}}</h2>
+				<br>
+				<p style="color: #404040;">Welcome, to Cart .</p>
+				<br>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<!-- <thead> -->
+					<tr>
+						<th>name</th>
+						<th>image</th>
+						<th>totalprice</th>
+						<th>status</th>
+						<th>time</th>
+						<th>owner</th>
+						<th>booking time</th>
+						<th>booking hours</th>
+					</tr>
+					<!-- </thead> -->
+					{% for x in data %}
+					<tbody>
+					<tr>
+						<td>{{x.turfid.name}}</td>
+						<td><img src="{{x.turfid.image.url}}" width="100" height="100"></td>
+						<td>{{x.totalprice}}</td>
+						<td>{{x.status}}</td>
+						<td>{{x.date}}</td>
+						<td>{{x.owner.fname}}</td>
+						<td>{{x.time}}</td>
+						<td>{{x.btiming}}</td>
+						<td><a href="/remove/?id={{x.id}}"><span class="fa fa-trash text-danger"></span></a></td>
+						<!-- <td><a href="/checkout/?id={{x.id}}"><span class="fa fa-check"></span>checkout</a></td> -->
+						{% if x.status == "notordered" %}
+						<td colspan="9"><button type="submit" value="payment" onclick="location.href='/payment/?gt={{x.totalprice}}'">payment</button></td>
+						{% endif %}
+					</tr>
+					<tr>
+						<td colspan="10" style="text-align: right;">Total: {{x.totalprice}}</td>
+					</tr>
+					</tbody>
+					{% endfor %}
+					<!-- <tr>
+						<td colspan="9"><button type="submit" value="payment" onclick="location.href='/payment/?gt={{gt}}'">payment</button></td>
+					</tr> -->
+					<!-- <tr>
+						<td colspan="9" style="text-align: left;"><a href="/removeall/?id={{x.id}}">remove all <i class="fa fa-trash"></i></a></td>
+					</tr> -->
+					
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

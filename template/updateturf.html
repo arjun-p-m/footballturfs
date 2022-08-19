@@ -1,0 +1,84 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">UPDATE TURF</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>Turf Update</h3>
+				<p style="color: #404040;">Welcome, Turf update.</p>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				{% for x in data %}
+				 <form action="/updateturf/?tid={{x.id}}" method="POST" enctype="multipart/form-data">
+				 	{% csrf_token %}
+					<ul>
+						<li class="text-info">Name: </li>
+						<li><input type="text" value="{{x.name}}" name="tName"></li>
+					</ul>				 
+					<!-- <ul>
+						<li class="text-info">owner: </li>
+						<li><input type="text" value="" name="tOwner"></li>
+					</ul> -->
+					<ul>
+						<li class="text-info">Address: </li>
+						<li><input type="text" value="{{x.address}}" name="tAddress"></li>
+					</ul>
+					<!-- <ul>
+						<li class="text-info">ratings:{{x.ratings}}</li>
+						<li>
+							<select type="number" name="tRatings" value="{{x.ratings}}" id="rate">
+								<option value="{{x.ratings}}">0</option>
+								<option value="{{x.ratings}}">1</option>
+								<option value="{{x.ratings}}">2</option>
+								<option value="{{x.ratings}}">3</option>
+								<option value="{{x.ratings}}">4</option>
+								<option value="{{x.ratings}}">5</option>
+							</select>
+						</li> -->
+						<!-- <li class="text-info">ratings:</li>
+						<li><input type="number" name="tRatings" value="{{x.ratings}}"></li> -->
+					<!-- </ul> -->
+					<ul>
+						<li class="text-info">price:</li>
+						<li><input type="number" value="{{x.price}}" name="tPrice"></li>
+					</ul>
+					<ul>
+						<li class="text-info">timing:</li>
+						<li><input type="text" value="{{x.timing}}" name="tTiming"></li>
+					</ul>		
+					<ul>
+						<div class="field-group"> 
+				<div class="content-input-field">
+				<img src="{{x.image.url}}" width="100" height="100">
+				<div class="field-group">
+					<p>do you want to update image?</p>
+					<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" id="inlineCheckbox1" name="img" onchange="myFunction();" value="yes">
+					<label class="form-check-label" for="inlineCheckbox1">yes</label>
+				    </div>
+				    <div class="form-check form-check-inline">
+				    <input class="form-check-input" type="radio" id="inlineCheckbox2" name="img" onchange="myFunction();" value="no">
+					<label class="form-check-label" for="inlineCheckbox2">no</label>
+				    </div>
+				</div>
+				<input type="file" name="tImage" >
+				</div>
+						<!-- <li class="text-info">Image: </li>
+						<li><input type="file" value="" name="tImage"></li> -->
+					 </ul>				
+					<input type="submit" value="Update">
+					<!-- <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> --> 
+				</form>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

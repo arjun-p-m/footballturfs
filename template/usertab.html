@@ -1,0 +1,42 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">User Tab</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>User Tab</h3>
+				<p>Welcome, User Tab.</p>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<tr>
+						<th>fname</th>
+						<th>lname</th>
+						<th>email</th>
+						<th>phone</th>
+						<!-- <th></th>
+						<th></th> -->
+					</tr>
+					{% for x in data %}
+					<tr>
+						<td>{{x.fname}}</td>
+						<td>{{x.lname}}</td>
+						<td>{{x.email}}</td>
+						<td>{{x.phone}}</td>
+						<td><a href="/edituser/?usid={{x.id}}"><span class="fa fa-pencil text-muted"></span></a></td>
+						<td><a href="/deleteuser/?usid={{x.id}}"><span class="fa fa-trash text-danger"></span></a></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

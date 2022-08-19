@@ -1,0 +1,65 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">Booking Orders TAB</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3 style="text-align: center;font-size: 35px;font-family:caveat;">Booking Orders Tab</h3>
+				<h2>{{msgkey}}</h2>
+				<p style="color: #404040;">Welcome, the booking orders.</p>
+				<br>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<!-- <thead> -->
+					<tr>
+						<th>name</th>
+						<th>image</th>
+						<th>totalprice</th>
+						<th>status</th>
+						<th>time</th>
+						<th>user</th>
+						<th>booking time</th>
+						<th>booking hours</th>
+						<!-- <th>owner</th> -->
+
+					</tr>
+					<!-- </thead> -->
+					{% for x in data %}
+					<tbody>
+					<tr>
+						<td>{{x.turfid.name}}</td>
+						<td><img src="{{x.turfid.image.url}}" width="100" height="100"></td>
+						<td>{{x.totalprice}}</td>
+						<td>{{x.status}}</td>
+						<td>{{x.date}}</td>
+						<td>{{x.name.fname}}</td>
+						<td>{{x.time}}</td>
+						<td>{{x.btiming}}</td>
+						<td></td>
+						<td>{% if x.status == "payed" %}<button  class="btn btn-primary" onclick="location.href='/available/?cid={{x.id}}';">pending</button>{% elif x.status == "confirmed" %}<button  class="btn btn-success" onclick="location.href='/notavailable/?cid={{x.id}}';">available</button>{% else %}<button  class="btn btn-danger">not available </button>{% endif %}</td>
+					</tr>
+					</tbody>
+					{% endfor %}
+					<!-- <tr>
+						<td colspan="9"><button type="submit" value="payment" onclick="location.href='/payment/?gt={{gt}}'">payment</button></td>
+					</tr>
+					<tr>
+						<td colspan="9" style="text-align: left;"><a href="/removeall/?id={{x.id}}">remove all <i class="fa fa-trash"></i></a></td>
+					</tr>
+					<tr>
+						<td colspan="9" style="text-align: right;">Total: {{gt}}</td>
+					</tr> -->
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

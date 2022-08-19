@@ -1,0 +1,32 @@
+{% extends 'backend/headfoot.html' %}
+{% block content %}
+	<div class="main-wthree">
+	<div class="container">
+	<div class="sin-w3-agile">
+		<h2>Profile</h2>
+		<form action="/signin/" method="POST">
+			{% csrf_token %}
+			<div>
+				<p style="text-align: center;">{{msg}}</p>
+			</div>
+			<div class="username">
+				<span class="username">Username:</span>
+				<input type="text" name="aName" class="name">
+				<div class="clearfix"></div>
+			</div>
+			<div class="password-agileits">
+				<span class="username">Password:</span>
+				<input type="password" name="aPassword" class="password">
+				<div class="clearfix"></div>
+			</div>
+			<div class="login-w3">
+				<input type="submit" name="" value="login">
+			</div>
+		</form>
+				<div class="back">
+					<a href="/1/">Back to home</a>
+				</div>
+	</div>
+	</div>
+	</div>
+{% endblock %}

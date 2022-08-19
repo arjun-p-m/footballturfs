@@ -1,0 +1,36 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Feedback</li>
+                </ol>
+            </div>
+        </div>
+        <!-- contact -->
+        <div class="contact">
+            <div class="container">
+                <h3>Feedback</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Feedback</th>
+                        <th>Turf</th>
+                    </tr>
+                </thead>
+                    {% for x in data %}
+                    <tbody>
+                    <tr>
+                        <td>{{x.uid.fname}}</td>
+                        <td>{{x.feedback}}</td>
+                        <td>{{x.turfid.name}}</td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+	   <!--contact-->
+{% endblock %}

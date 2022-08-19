@@ -1,0 +1,62 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/register/">OWNER REGISTER</a></li>
+                    <li><a href="/user/">USER REGISTER</a></li>
+                    <li class="active">LOGIN</li>
+                </ol>
+                <h3>{{msg}}</h3>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="login-grids">
+                <div class="col-md-6 log">
+				<h3>LOGIN</h3>
+				<div class="strip"></div>
+                <p style="color: #404040;">Welcome, please enter the following to continue.</p>
+               <!--  <p>If you have previously Login with us, <a href="#">Click Here</a></p> -->
+				<form action="/login/" method="POST">
+				 	{% csrf_token %}
+					<ul style="list-style-type: none;">
+						<li class="text-info">User Name: </li>
+						<li><input type="text" value="" name="rFname"></li>
+					</ul>
+
+					<ul style="list-style-type: none;">
+						<li class="text-info">Password:</li>
+						<li><input type="password" value="" name="rPassword"></li>
+					</ul>
+					<!-- <ul>
+						<li class="text-info">Mobile Number:</li>
+						<li><input type="text" value="" name="rPhone"></li>
+					</ul> -->						
+					<input type="submit" value="login">
+					<!-- <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> --> 
+					<a href="/forgotpassword/">Forgot Password </a>
+				</form>
+			</div>
+			<div class="col-md-6 login-right">
+				<h3>New Registration</h3>
+				<div class="strip"></div>
+				<p style="color: #404040;">By creating an account with our store, you will be able to book turfs for the required time, you can view different turfs and their details in this website and more.</p>
+				<a href="/register/" class="button">Create An Account</a>
+				
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}
+
+
+
+
+
+
+

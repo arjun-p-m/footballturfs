@@ -1,0 +1,106 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">PROFILE</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			{% if request.session.myid %}
+			{% for x in data %}
+			<div class="login-grids">
+                <div class="col-md-6 log">
+				<h3>Profile</h3>
+				<p style="color: #404040;">Welcome, to the Profile.</p>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				 <form action="/profile/?uid={{x.id}}" method="POST">
+				 	{% csrf_token %}
+					<ul style="list-style-type: none;">
+						<li class="text-info">First Name: </li>
+						<li><input type="text" value="{{x.fname}}" name="rFname"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Last Name: </li>
+						<li><input type="text" value="{{x.lname}}" name="rLname"></li>
+					 </ul>				 
+					<ul style="list-style-type: none;">
+						<li class="text-info">Email: </li>
+						<li><input type="text" value="{{x.email}}" name="rEmail"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Password: </li>
+						<li><input type="password" value="{{x.password}}" name="rPassword"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Mobile Number:</li>
+						<li><input type="text" value="{{x.phone}}" name="rPhone"></li>
+					</ul>						
+					<!-- <input type="submit" value="update Now"> -->
+					<!-- <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> --> 
+				</form>
+				
+			</div>
+			<div class="col-md-6 login-right">
+				<h3>New Registration</h3>
+				<div class="strip"></div>
+				<p style="color: #404040;">By creating an account with our store, you will be able to book turfs for the required time, you can view different turfs and their details in this website and more.</p>
+				<a href="/register/" class="button">Create An Account</a>
+				<a href="/ownereditpassword/?uid={{x.id}}" class="button">Change Password</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		{% endfor %}
+		{% elif request.session.userid %}
+		{% for x in data %}
+			<div class="login-grids">
+                <div class="col-md-6 log">
+				<h3>Profile</h3>
+				<p style="color: #404040;">Welcome, to the Profile.</p>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				 <form action="/profile/?usid={{x.id}}" method="POST">
+				 	{% csrf_token %}
+					<ul style="list-style-type: none;">
+						<li class="text-info">First Name: </li>
+						<li><input type="text" value="{{x.fname}}" name="rFname"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Last Name: </li>
+						<li><input type="text" value="{{x.lname}}" name="rLname"></li>
+					 </ul>				 
+					<ul style="list-style-type: none;">
+						<li class="text-info">Email: </li>
+						<li><input type="text" value="{{x.email}}" name="rEmail"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Password: </li>
+						<li><input type="password" value="{{x.password}}" name="rPassword"></li>
+					</ul>
+					<ul style="list-style-type: none;">
+						<li class="text-info">Mobile Number:</li>
+						<li><input type="text" value="{{x.phone}}" name="rPhone"></li>
+					</ul>						
+					<!-- <input type="submit" value="update Now"> -->
+					<!-- <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> --> 
+				</form>
+				
+			</div>
+			<div class="col-md-6 login-right">
+				<h3>New Registration</h3>
+				<div class="strip"></div>
+				<p style="color: #404040;">By creating an account with our store, you will be able to book turfs for the required time, you can view different turfs and their details in this website and more.</p>
+				<a href="/register/" class="button">Create An Account</a>
+				<a href="/usereditpassword/?usid={{x.id}}" class="button">Change Password</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		{% endfor %}
+		{% endif %}
+		</div>
+	</div>
+{% endblock %}

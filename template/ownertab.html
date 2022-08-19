@@ -1,0 +1,70 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">Owner Tab</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			{% if request.session.myid %}
+			<div class="reg">
+				<h3>Owner Tab</h3>
+				<p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p>
+				<table class="table">
+					<tr>
+						<th>fname</th>
+						<th>lname</th>
+						<th>email</th>
+						<th>phone</th>
+						<!-- <th></th>
+						<th></th> -->
+					</tr>
+					{% for x in data %}
+					<tr>
+						<td>{{x.fname}}</td>
+						<td>{{x.lname}}</td>
+						<td>{{x.email}}</td>
+						<td>{{x.phone}}</td>
+						<td><a href="/editowner/?uid={{x.id}}"><span class="fa fa-pencil text-muted"></span></a></td>
+						<td><a href="/deleteowner/?uid={{x.id}}"><span class="fa fa-trash text-danger"></span></a></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			{% elif request.ssession.usid %}
+			<div class="reg">
+				<h3>Register Now</h3>
+				<p>Welcome, please enter the following details to continue.</p>
+				<p>If you have previously registered with us, <a href="#">click here</a></p>
+				<table class="table">
+					<tr>
+						<th>fname</th>
+						<th>lname</th>
+						<th>email</th>
+						<th>phone</th>
+						<!-- <th></th>
+						<th></th> -->
+					</tr>
+					{% for x in data %}
+					<tr>
+						<td>{{x.fname}}</td>
+						<td>{{x.lname}}</td>
+						<td>{{x.email}}</td>
+						<td>{{x.phone}}</td>
+						<td><a href="/editowner?usid={{x.id}}"><span class="fa fa-pencil"></span></a></td>
+						<td><a href="/deleteowner/?usid={{x.id}}"><span class="fa fa-trash"></span></a></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

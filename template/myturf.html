@@ -1,0 +1,66 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">MY TURF</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3>MY TURF</h3>
+				<p>Welcome, please enter the following details to continue.</p>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				{% for x in data %}
+				 <form action="/myturf/?uid={{x.id}}" method="POST" enctype="multipart/form-data">
+				 	{% csrf_token %}
+					<ul>
+						<li class="text-info">Name: </li>
+						<li><input type="text" value="{{}}" name="tName"></li>
+					</ul>
+					<ul>
+						<li class="text-info">Image: </li>
+						<li><input type="file" value="" name="tImage"></li>
+					 </ul>				 
+					<!-- <ul>
+						<li class="text-info">owner: </li>
+						<li><input type="text" value="" name="tOwner"></li>
+					</ul> -->
+					<ul>
+						<li class="text-info">Address: </li>
+						<li><input type="text" value="" name="tAddress"></li>
+					</ul>
+					<!-- <ul>
+						<li class="text-info">ratings:</li>
+						<li>
+							<select type="number" name="tRatings" value="" id="rate">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</li>
+					</ul> -->
+					<ul>
+						<li class="text-info">price:</li>
+						<li><input type="number" value="" name="tPrice"></li>
+					</ul>
+					<ul>
+						<li class="text-info">timing:</li>
+						<li><input type="text" value="" name="tTiming"></li>
+					</ul>						
+					<input type="submit" value="Register Now">
+					<!-- <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> --> 
+				</form>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

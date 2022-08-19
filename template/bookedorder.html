@@ -1,0 +1,55 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+        <div class="head-bread">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login/">LOGIN</a></li>
+                    <li class="active">Booked Orders</li>
+                </ol>
+            </div>
+        </div>
+        <!-- reg-form -->
+	<div class="reg-form">
+		<div class="container">
+			<div class="reg">
+				<h3 style="text-align: center;font-size: 35px;font-family:caveat;">Booked Orders</h3>
+				<h3>{{msgkey}}</h3>
+				<p style="color: #404040;">Welcome, the booked orders.</p>
+				<br>
+				<!-- <p>If you have previously registered with us, <a href="#">click here</a></p> -->
+				<table class="table">
+					<!-- <thead> -->
+					<tr>
+						<th>user</th>
+						<th>image</th>
+						<th>turf</th>
+						<th>totalprice</th>
+						<th>status</th>
+						<th>time</th>
+						<th>booking time</th>
+						<th>booking hours</th>
+						<!-- <th>owner</th> -->
+
+					</tr>
+					<!-- </thead> -->
+					{% for x in data %}
+					<tbody>
+					<tr>
+						<td>{{x.name.fname}}</td>
+						<td><img src="{{x.turfid.image.url}}" width="100" height="100"></td>
+						<td>{{x.turfid.name}}</td>						
+						<td>{{x.totalprice}}</td>
+						<td>{{x.status}}</td>
+						<td>{{x.date}}</td>
+						<td>{{x.time}}</td>
+						<td>{{x.btiming}}</td>
+						<!-- <td></td> -->
+					</tr>
+					</tbody>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
