@@ -202,16 +202,16 @@ def LOGIN(request):
 		user=user_tb.objects.filter(fname=uname,password=password)
 		if owner:
 			for x in owner:
-				# if request.session.has_key("userid"):
-				# 	del request.session["userid"]
+				if request.session.has_key("userid"):
+					del request.session["userid"]
 				request.session["myid"]=x.id
 				request.session["myname"]=x.fname
 				tur=turf_tb.objects.all()
 				return render(request,"index.html",{"data":tur})
 		elif user:
 			for x in user:
-				# if request.session.has_key("myid"):
-				# 	del request.session["myid"]
+				if request.session.has_key("myid"):
+					del request.session["myid"]
 				request.session["userid"]=x.id
 				request.session["username"]=x.fname
 				tur=turf_tb.objects.all()
